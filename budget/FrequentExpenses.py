@@ -1,4 +1,6 @@
-import Expense 
+from itertools import count
+from optparse import Values
+from . import Expense 
 import collections
 
 expenses = Expense.Expenses()
@@ -10,5 +12,15 @@ for expense in expenses.list:
 
 spending_counter = collections.Counter(spending_catagories)
 print(spending_counter)
+
+top5 = spending_counter.most_common(5)
+categories, Count = zip(top5)
+list()
+print(categories)
+print(Count)
+
+
+
+
 
 
