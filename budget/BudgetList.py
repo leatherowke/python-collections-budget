@@ -1,9 +1,3 @@
- #  def __next__(self) :
-   #     try:
-    #        return __next__(self_e)
-
-
-
 def __main__():
     from . import Expense
 
@@ -13,6 +7,9 @@ def __main__():
         myBudgetList.append(expense.amount)
     
     print('the count of all expenses: ' + str(len(myBudgetList)))
+
+    for entry in myBudgetList:
+        print(entry)
     
 
 class BudgetList:
@@ -35,12 +32,16 @@ class BudgetList:
         return len(self.expenses) + len(self.overages)
 
 
-   # def __iter__(self):
-    #    iter(self.expenses)
-     #   self.iter_o = iter(self.overages)
-      #  return self
+    def __iter__(self):
+        iter(self.expenses)
+        self.iter_o = iter(self.overages)
+        return self
 
-    
+    def __next__(self) :
+        try:
+            return next(self.iter_o)
+        except StopIteration:
+            return next(self.iter_o)
 
 myBudgetList = BudgetList(1200)
 myBudgetList
