@@ -1,5 +1,8 @@
+
+
 def __main__():
     from . import Expense
+    import matplotlib.pyplot as plt
 
     expenses = Expense.Expenses()
     expenses.read_expenses('data\spending_data.csv')
@@ -11,6 +14,13 @@ def __main__():
     for entry in myBudgetList:
         print(entry)
     
+    fig, ax = plt.subplots()
+    labels = ['Expenses', 'Overages', 'Budget']
+    values = myBudgetList.sum_expenses, myBudgetList.sum_overages, myBudgetList.budget
+
+    ax.bar(labels, values, color=['green', 'red', 'blue'])
+    ax.set_title('Your total expenses vs. total budget')
+    plt.show()
 
 class BudgetList:
     def __init__(self, budget ):
